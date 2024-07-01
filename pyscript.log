@@ -1,16 +1,16 @@
-2024-07-01 04:44:02,937 - root - INFO - Loading data from movies_metadata.csv
-2024-07-01 04:44:03,853 - root - INFO - Number of unique movies: 42277
-2024-07-01 04:44:03,853 - root - INFO - Average rating of all movies: 5.244896612406511
-2024-07-01 04:44:03,862 - root - INFO - Weighted average rating of all movies: 6.681504836033629
-2024-07-01 04:44:03,897 - root - INFO - Top 5 movies by IMDB's weighted rating:
-2024-07-01 04:44:03,897 - root - INFO -                           title release_date  vote_count  vote_average  popularity                                             genres        wr
+2024-07-01 05:51:00,408 - root - INFO - Loading data from movies_dataset.csv
+2024-07-01 05:51:01,357 - root - INFO - Number of unique movies: 42277
+2024-07-01 05:51:01,357 - root - INFO - Average rating of all movies: 5.244896612406511
+2024-07-01 05:51:01,357 - root - INFO - Weighted average rating of all movies: 6.681504836033629
+2024-07-01 05:51:01,388 - root - INFO - Top 5 movies by IMDB's weighted rating:
+2024-07-01 05:51:01,388 - root - INFO -                           title release_date  vote_count  vote_average  popularity                                             genres        wr
 314    The Shawshank Redemption   1994-09-23      8358.0           8.5   51.645403  [{'id': 18, 'name': 'Drama'}, {'id': 80, 'name...  8.339318
 834               The Godfather   1972-03-14      6024.0           8.5   41.109264  [{'id': 18, 'name': 'Drama'}, {'id': 80, 'name...  8.281246
 12481           The Dark Knight   2008-07-16     12269.0           8.3  123.167259  [{'id': 18, 'name': 'Drama'}, {'id': 28, 'name...  8.195622
 2843                 Fight Club   1999-10-15      9678.0           8.3   63.869599                      [{'id': 18, 'name': 'Drama'}]  8.168877
 292                Pulp Fiction   1994-09-10      8670.0           8.3  140.950236  [{'id': 53, 'name': 'Thriller'}, {'id': 80, 'n...  8.154359
-2024-07-01 04:44:04,235 - root - INFO - Number of movies by release year:
-2024-07-01 04:44:04,243 - root - INFO - year
+2024-07-01 05:51:01,804 - root - INFO - Number of movies by release year:
+2024-07-01 05:51:01,804 - root - INFO - year
 2014    1974
 2015    1905
 2013    1889
@@ -23,8 +23,8 @@
 1874       1
 1883       1
 Name: count, Length: 136, dtype: int64
-2024-07-01 04:44:06,167 - root - INFO - Number of movies in each genre
-2024-07-01 04:44:06,175 - root - INFO - name
+2024-07-01 05:51:03,876 - root - INFO - Number of movies in each genre:
+2024-07-01 05:51:03,876 - root - INFO - name
 Drama              20265
 Comedy             13182
 Thriller            7624
@@ -46,4 +46,4 @@ War                 1323
 Western             1042
 TV Movie             767
 Name: count, dtype: int64
-2024-07-01 04:44:07,143 - root - INFO - Output data successfully saved to movies_df_output.json
+2024-07-01 05:51:04,816 - root - INFO - Output data successfully saved to movies_output.json

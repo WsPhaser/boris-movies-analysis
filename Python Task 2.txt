@@ -23,7 +23,7 @@ Instructions:
 4. Print the results to the console. - Done
 5. Save the final DataFrame to a JSON file. - Done
 6. Use OOP - Done
-7. Upload the code in public GIT repository
+7. Upload the code in public GIT repository - Done
 8. Logging, error handling, docstrings are mandatory - Done
 9. Provide setup.py or pyproject.toml    + requirements.txt - Done
 10. Write unittests (optional) - Done

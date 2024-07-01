@@ -13,7 +13,7 @@ extractor = YearExtractor()
 
 
 # Specify the file path to the csv input file
-file_path = 'movies_metadata.csv'
+file_path = 'movies_dataset.csv'
 
 def load_dataset_from_csv(file_path):
     """
@@ -34,6 +34,7 @@ def load_dataset_from_csv(file_path):
         return movies_df
     except Exception as e:
         logging.error(f"Error loading the data: {e}")
+        print("")
         print(f"Error loading the data: {e}")
         return None
 
@@ -55,11 +56,13 @@ def count_unique_movies(movies_df):
     try:
         unique_movie_count = movies_df['title'].nunique()
         logging.info(f"Number of unique movies: {unique_movie_count}")
+        print("")
         print("Number of unique movies:", unique_movie_count)
         print("")
         return unique_movie_count
     except Exception as e:
         logging.error(f"Error counting the unique movies: {e}")
+        print("")
         print(f"Error counting the unique movies: {e}")
         return None
 
@@ -85,23 +88,28 @@ def calculate_average_rating_of_all_movies(movies_df):
         # Check if vote_counts and vote_averages are not empty
         if vote_counts.empty or vote_averages.empty:
             logging.warning("No valid vote counts or vote averages found.")
+            print("")
             print("No valid vote counts or vote averages found.")
             return None, None
 
         # Calculate the average rating of all movies
         avg_rating = vote_averages.mean()
         logging.info(f"Average rating of all movies: {avg_rating}")
+        print("")
         print("Average rating of all movies:", avg_rating)
+        print("")
 
         # Calculate the weighted average rating of all movies
         weighted_avg_rating = (movies_df['vote_average'] * movies_df['vote_count']).sum() / movies_df['vote_count'].sum()
         logging.info(f"Weighted average rating of all movies: {weighted_avg_rating}")
+        print("")
         print("Weighted average rating of all movies:", weighted_avg_rating)
         print("")
 
         return avg_rating, weighted_avg_rating
     except Exception as e:
         logging.error(f"Error calculating movie ratings: {e}")
+        print("")
         print(f"Error calculating movie ratings: {e}")
         return None, None
 
@@ -146,6 +154,7 @@ def calculate_top_5_rated_movies(movies_df):
 
         logging.info("Top 5 movies by IMDB's weighted rating:")
         logging.info(qualified.head(5))
+        print("")
         print("Top 5 movies by IMDB's weighted rating:")
         print(qualified.head(5))
         print("")
@@ -153,6 +162,7 @@ def calculate_top_5_rated_movies(movies_df):
         return qualified
     except Exception as e:
         logging.error(f"Error calculating top movies: {e}")
+        print("")
         print(f"Error calculating top movies: {e}")
         return None
 
@@ -173,11 +183,13 @@ def count_movies_by_release_year(movies_df, extractor):
         movies_df['year'] = pd.to_datetime(movies_df['release_date'], errors='coerce').apply(extractor.extract_year)
         logging.info("Number of movies by release year:")
         logging.info(movies_df['year'].value_counts(dropna=False))
+        print("")
         print("Number of movies by release year:")
         print(movies_df['year'].value_counts(dropna=False))
         print("")
     except Exception as e:
         logging.error(f"Error extracting and counting movie release years: {e}")
+        print("")
         print(f"Error extracting and counting movie release years: {e}")
 
 
@@ -218,17 +230,19 @@ def count_movies_in_each_genre(movies_df):
         genres_df = pd.json_normalize(genres_normalized)
 
         # Count the occurrences of each genre
-        logging.info("Number of movies in each genre")
-        print("Number of movies in each genre")
         genre_counts = genres_df['name'].value_counts()
         # If the genre occurs more than once - to filter for outliers
+        logging.info("Number of movies in each genre:")
         logging.info(genre_counts[genre_counts > 1])
+        print("")
+        print("Number of movies in each genre:")
         print(genre_counts[genre_counts > 1])
         print("")
 
         return genres_df
     except Exception as e:
         logging.error(f"Error processing genres: {e}")
+        print("")
         print(f"Error processing genres: {e}")
         return None
 
@@ -247,11 +261,13 @@ def save_dataset_to_json(movies_df, movies_df_output):
     try:
         movies_df.to_json(movies_df_output, orient='records', lines=True)
         logging.info(f"Output data successfully saved to {movies_df_output}")
+        print("")
         print(f"Output data successfully saved to {movies_df_output}")
         print("")
         return True
     except Exception as e:
         logging.error(f"Error saving DataFrame to JSON: {e}")
+        print("")
         print(f"Error saving DataFrame to JSON: {e}")
         return False
 
@@ -263,7 +279,7 @@ def main():
     calculate_top_5_rated_movies(movies_df)
     count_movies_by_release_year(movies_df, extractor)
     count_movies_in_each_genre(movies_df)
-    save_dataset_to_json(movies_df, 'movies_df_output.json')
+    save_dataset_to_json(movies_df, 'movies_output.json')
 
 
 if __name__ == "__main__":
